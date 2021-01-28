@@ -10,8 +10,7 @@ controlClawClose = 0
 #Component Control Pins (pick numbers still)
 armForward = 0
 armBackward = 0
-clawOpen = 0
-clawClose = 0
+servoClaw = 0
 #Camera pan perhaps
 
 #Set up pins
@@ -23,11 +22,16 @@ GPIO.setup(armBackward, GPIO.OUT)
 
 GPIO.setup(controlClawOpen, GPIO.IN)
 GPIO.setup(controlClawClose, GPIO.IN)
-GPIO.setup(clawOpen, GPIO.OUT)
-GPIO.setup(clawClose, GPIO.OUT)
+
+# Servo variable 
+GPIO.setup(servoClaw, GPIO.OUT)
+servoClaw = GPIO.PWM(0, 50) # Note 0 is the pin number we are using for the claw 
+
 #Camera setup pins
 
 #Control Algorithm
+
+servoClaw.start(0)
 while(True):
     if(controlArmForward == 1): #Arm Extension
         #set ArmForward pin to 1 (true value outputs max 3.3v)
