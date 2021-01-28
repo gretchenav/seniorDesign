@@ -15,6 +15,7 @@ clawClose = 0
 #Camera pan perhaps
 
 #Set up pins
+GPIO.setmode(GPIO.BOARD)
 GPIO.setup(controlArmForward, GPIO.IN)
 GPIO.setup(controlArmBackward, GPIO.IN)
 GPIO.setup(armForward, GPIO.OUT)
