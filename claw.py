@@ -6,32 +6,33 @@
 import RPI.GPIO as GPIO
 from time import sleep
 
-servoPin = 15
+# Set Pins Here
+servoPin = 0
+forwardButton = 0
+backwardButton = 0
 
-# Set pins here 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(pin1, GPIO.IN) for clockwise rotation
-GPIO.setup(pin2, GPIO.IN) for counter counterwise rotation
-GPIO.setup(pin3, GPIO.IN) for control pin 
-GPIO.setup(servoPin, GPIO.OUT)
+GPIO.setup(forwardButton, GPIO.IN) # for clockwise rotation
+GPIO.setup(backwardButton, GPIO.IN) # for counter counterwise rotation
+GPIO.setup(servoPin, GPIO.OUT) # for control pin 
 
-# GPIO 15 for the PWM 
-pwm = GPIO.PWM(servoPin, 50) 
-
-i = 5;
+# GPIO servoPin for the PWM with frequency of 50 Hz
+pwmServo = GPIO.PWM(servoPin, 50) 
+pwmServo.start(0)
+i = 2;
 
 # clockwise 
-while (GPIO.input(pin1) == 1):
-	pwm.ChangeDutyCycle(i)
+while (GPIO.input(forwardButton) == 1):
+	pwmServo.ChangeDutyCycle(i)
 	i = i+1; 
-	if (i == 0):
+	if (i == 12):
 		break
 
 # counterclockwise 
-while (GPIO.input(pin2) == 1):
-	pwm(ChangeDutyCycle(i))
+while (GPIO.input(backwardButton) == 1):
+	pwmServo(ChangeDutyCycle(i))
 	i = i-1;
-	if (i == 5):
+	if (i == 2):
 		break
 
 
