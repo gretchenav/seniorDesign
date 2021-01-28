@@ -9,7 +9,7 @@ from time import sleep
 servoPin = 15
 
 # Set pins here 
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 GPIO.setup(pin1, GPIO.IN) for clockwise rotation
 GPIO.setup(pin2, GPIO.IN) for counter counterwise rotation
 GPIO.setup(pin3, GPIO.IN) for control pin 
